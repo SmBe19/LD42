@@ -13,6 +13,8 @@ var selection = null
 var road_building_active = false
 var city_building_active = false
 
+var init_cam_pos
+
 func activate_road_building(active):
 	road_building_active = active
 
@@ -25,6 +27,26 @@ func create_city(x, y):
 	city.position.x = x
 	city.position.y = y
 	$Cities.add_child(city)
+	return city
+
+func get_nearest(city, omit):
+	var mi = null
+	var miv = 0x3fffffff
+	for acity in $Cities.get_children():
+		if acity == city or acity in omit:
+			continue
+		var dist = city.position.distance_to(acity.position)
+		if dist < miv:
+			miv = dist
+			mi = acity
+	return mi
+
+func create_city_with_roads(x, y):
+	var city = create_city(x, y)
+	var mi1 = get_nearest(city, [])
+	var mi2 = get_nearest(city, [mi1])
+	create_road(city, mi1)
+	create_road(city, mi2)
 	return city
 	
 func city_dist(x, y):
@@ -64,7 +86,31 @@ func on_city_clicked(city):
 		emit_signal("road_built")
 	selection = null
 
+func local_to_global(local):
+	var cam = $"/root/Root/Camera".get_camera_screen_center()
+	return local + cam - init_cam_pos
+
+func _input(event):
+	if event is InputEventMouseButton:
+		if not event.is_pressed():
+			if city_building_active:
+				var global = local_to_global(event.position)
+				var x = global.x
+				var y = global.y
+				get_tree().set_input_as_handled()
+				if city_dist(global.x, global.y) > min_dist:
+					create_city_with_roads(global.x, global.y)
+					emit_signal("city_built")
+	else:
+		if city_building_active:
+			var global = local_to_global(event.position)
+			if city_dist(global.x, global.y) > min_dist:
+				$CityPrototype/Sprite.modulate = Color(1, 1, 1, 1)
+			else:
+				$CityPrototype/Sprite.modulate = Color(0.8, 0.2, 0.2, 0.5)
+
 func _ready():
+	init_cam_pos = $"/root/Root/Camera".get_camera_screen_center()
 	randomize()
 	var added_cities = []
 	for i in range(city_count):

@@ -51,10 +51,17 @@ func choose_card():
 	rval *= probsum
 	for typ in CARD_TYPE.values():
 		if rval <= card_probabilities[typ]:
+			if typ == CARD_ROAD and not can_build_road():
+				rval -= card_probabilities[typ]
+				continue
 			$Viewport/Card.set_card_image(card_textures[typ])
 			return typ
 		rval -= card_probabilities[typ]
 
+func can_build_road():
+	var c = $"/root/Root/Game/Cities".get_child_count()
+	var r = $"/root/Root/Game/Roads".get_child_count()
+	return (c * (c-1))/2 != r
 
 func _on_Button_pressed():
 	match state:

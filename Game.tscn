@@ -22,5 +22,6 @@ script = ExtResource( 2 )
 [node name="Sprite" type="Sprite" parent="CityPrototype" index="0"]
 
 texture = ExtResource( 3 )
+_sections_unfolded = [ "Visibility" ]
 
 
