@@ -85,7 +85,6 @@ _sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Visibility
 
 [node name="Cars" type="Particles2D" parent="." index="1"]
 
-visible = false
 emitting = true
 amount = 5
 lifetime = 5.0
