@@ -1,18 +1,23 @@
 extends Node
 
+signal road_built
+signal city_built
+
 var Road = preload("res://Road.tscn")
 
 var selection = null
+var road_building_active = false
+var city_building_active = false
 
-func _ready():
-	pass
+func activate_road_building(active):
+	road_building_active = active
 
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
+func activate_city_building(active):
+	city_building_active = active
 
 func create_road(city1, city2):
+	if not road_building_active:
+		return false
 	if city1.connected(city2):
 		print("already connected")
 		return false
@@ -24,6 +29,11 @@ func create_road(city1, city2):
 	return true
 
 func on_city_clicked(city):
+	if not road_building_active:
+		if selection != null:
+			selection.set_marked(false)
+			selection = null
+		return
 	if selection == null:
 		selection = city
 		city.set_marked(true)
@@ -33,4 +43,6 @@ func on_city_clicked(city):
 		selection = null
 		return
 	create_road(selection, city)
+	emit_signal("road_built")
 	selection = null
+	

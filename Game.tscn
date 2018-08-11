@@ -14,21 +14,17 @@ script = ExtResource( 1 )
 [node name="City" parent="Cities" index="0" instance=ExtResource( 2 )]
 
 position = Vector2( 166.875, 141.808 )
-scale = Vector2( 1, 1 )
 
 [node name="City2" parent="Cities" index="1" instance=ExtResource( 2 )]
 
 position = Vector2( 353.735, 385.478 )
-scale = Vector2( 1, 1 )
 
 [node name="City3" parent="Cities" index="2" instance=ExtResource( 2 )]
 
 position = Vector2( 772.463, 97.9655 )
-scale = Vector2( 1, 1 )
 
 [node name="City4" parent="Cities" index="3" instance=ExtResource( 2 )]
 
 position = Vector2( 724.264, 305.697 )
-scale = Vector2( 1, 1 )
 
 

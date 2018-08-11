@@ -3,7 +3,7 @@
 [ext_resource path="res://Game.tscn" type="PackedScene" id=1]
 [ext_resource path="res://FixHUD.tscn" type="PackedScene" id=2]
 
-[node name="Root" type="Node"]
+[node name="Root" type="Node" index="0"]
 
 [node name="Game" parent="." index="0" instance=ExtResource( 1 )]
 

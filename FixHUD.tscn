@@ -71,6 +71,10 @@ _sections_unfolded = [ "Rect", "custom_fonts" ]
 
 position = Vector2( 1152.43, 606.276 )
 script = ExtResource( 3 )
+card_probabilities = {
+0: 0.5,
+1: 0.5
+}
 
 [node name="Viewport" type="Viewport" parent="Card" index="0"]
 
