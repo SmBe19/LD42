@@ -1,0 +1,37 @@
+# Required Images
+
+ - [ ] Game Logo
+ - [ ] Card Background
+ - [ ] Card Foreground
+ - [ ] Card Road
+ - [ ] Card City
+ - [ ] Card Thunder Storm
+ - [ ] Card Earthquake
+ - [ ] Card Plague
+ - [ ] Card Heat Wave
+ - [ ] Card Meteor
+ - [ ] Card Tsunami
+ - [ ] Card Bear Attack
+ - [ ] Card Forest Fire
+ - [ ] Cursor New City
+ - [ ] Cursor New Road
+ - [ ] Cursor/Icon Action Thunder Storm
+ - [ ] Cursor/Icon Action Earthquake
+ - [ ] Cursor/Icon Action Plague
+ - [ ] Cursor/Icon Action Heat Wave
+ - [ ] Cursor/Icon Action Meteor
+ - [ ] Cursor/Icon Action Tsunami
+ - [ ] Cursor/Icon Action Bear Attack
+ - [ ] Cursor/Icon Action Forest Fire
+ - [ ] A few small houses
+ - [ ] Airport
+ - [ ] A few large houses
+ - [ ] Street (Repeatable)
+ - [ ] A few cars
+ - [ ] Airplane
+ - [ ] Icon Population
+ - [ ] Heart
+ - [ ] Background image
+ - [ ] A few trees for Background
+ - [ ] Field for Background
+ - [ ] Forest for Background
