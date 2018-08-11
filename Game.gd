@@ -2,6 +2,8 @@ extends Node
 
 signal road_built
 signal city_built
+signal city_clicked(city)
+signal road_clicked(road)
 
 export var city_count = 5
 export var min_dist = 200
@@ -65,7 +67,6 @@ func create_road(city1, city2):
 	var road = Road.instance()
 	road.init(city1, city2)
 	$Roads.add_child(road)
-	city1.attractivity += 0.3
 	print("connecting " + city1.name + " and " + city2.name)
 	return true
 
@@ -74,6 +75,7 @@ func on_city_clicked(city):
 		if selection != null:
 			selection.set_marked(false)
 			selection = null
+		emit_signal("city_clicked", city)
 		return
 	if selection == null:
 		selection = city
@@ -87,6 +89,9 @@ func on_city_clicked(city):
 	if success:
 		emit_signal("road_built")
 	selection = null
+
+func on_road_clicked(road):
+	emit_signal("road_clicked", road)
 
 func local_to_global(local):
 	var cam = $"/root/Root/Camera".get_camera_screen_center()
@@ -103,7 +108,7 @@ func _input(event):
 				if city_dist(global.x, global.y) > min_dist:
 					create_city_with_roads(global.x, global.y)
 					emit_signal("city_built")
-	else:
+	elif event is InputEventMouseMotion:
 		if city_building_active:
 			var global = local_to_global(event.position)
 			if city_dist(global.x, global.y) > min_dist:
@@ -130,5 +135,6 @@ func _ready():
 	for a in added_cities:
 		for b in added_cities:
 			if a != b:
-				create_road(a, b)
+				if randi() % 3 == 0:
+					create_road(a, b)
 	$"/root/Root/Camera".update_camera_limits()

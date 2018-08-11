@@ -3,7 +3,7 @@
 [ext_resource path="res://Road.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
-[sub_resource type="Shader" id=3]
+[sub_resource type="Shader" id=1]
 
 code = "shader_type particles;
 //uniform float density = 0.5;
@@ -36,10 +36,10 @@ uint hash(uint x) {
 void vertex() {
 	//uint base_number = NUMBER/uint(trail_divisor);
 	//uint alt_seed = hash(base_number+uint(1)+RANDOM_SEED);
-	
+
 	float pi = 3.14159;
 	float degree_to_rad = pi / 180.0;
-	
+
 	float speed = dist / LIFETIME;
 	float density = 1.0 - 0.95 * exp(-abs(flow));
 
@@ -54,15 +54,15 @@ void vertex() {
 		}
 	} else {
 	}
-	
+
 }
 
 "
 
-[sub_resource type="ShaderMaterial" id=4]
+[sub_resource type="ShaderMaterial" id=2]
 
 render_priority = 0
-shader = SubResource( 3 )
+shader = SubResource( 1 )
 shader_param/flow = null
 shader_param/dist = null
 _sections_unfolded = [ "Resource", "shader_param" ]
@@ -84,8 +84,12 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
-visible = false
+modulate = Color( 0.352941, 0.352941, 0.352941, 1 )
+z_index = -1
 texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
+_sections_unfolded = [ "Region", "Visibility", "Z Index" ]
 
 [node name="Cars" type="Particles2D" parent="." index="1"]
 
@@ -102,7 +106,7 @@ fract_delta = false
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 1
-process_material = SubResource( 4 )
+process_material = SubResource( 2 )
 texture = ExtResource( 2 )
 normal_map = null
 h_frames = 1
@@ -138,5 +142,3 @@ audio_bus_name = "Master"
 
 scale = Vector2( 1, 1 )
 shape = SubResource( 6 )
-
-

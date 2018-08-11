@@ -8,8 +8,8 @@ var custom_next = false
 var current_card = CARD_ROAD
 
 var card_probabilities = {
-	CARD_ROAD: 4,
-	CARD_CITY: 4,
+	CARD_ROAD: 3,
+	CARD_CITY: 3,
 	CARD_STORM: 1,
 	CARD_QUAKE: 1,
 	CARD_PLAGUE: 1,
@@ -115,7 +115,15 @@ func _on_city_built():
 	$"/root/Root/Camera".update_camera_limits()
 	remove_card()
 
+func _on_city_clicked(city):
+	pass
+
+func _on_road_clicked(road):
+	pass
+
 func _ready():
 	randomize()
 	$"/root/Root/Game".connect("road_built", self, "_on_road_built")
 	$"/root/Root/Game".connect("city_built", self, "_on_city_built")
+	$"/root/Root/Game".connect("city_clicked", self, "_on_city_clicked")
+	$"/root/Root/Game".connect("road_clicked", self, "_on_road_clicked")
