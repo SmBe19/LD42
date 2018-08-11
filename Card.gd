@@ -7,12 +7,12 @@ var state = HIDDEN
 func _on_Button_pressed():
 	match state:
 		HIDDEN:
-			$Viewport/Card/Flip.play("Rotate")
+			$Viewport/Card.start_rotation()
 			state = ROTATING
 		ROTATING:
 			return
 		SHOWING:
-			$Viewport/Card/Flip.play("RemoveCard")
+			$Viewport/Card.start_remove()
 			state = REMOVING
 		REMOVING:
 			return

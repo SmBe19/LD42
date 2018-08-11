@@ -140,7 +140,7 @@ tracks/2/keys = {
 } ]
 }
 
-[node name="Card" type="Spatial"]
+[node name="Card" type="Spatial" index="0"]
 
 script = ExtResource( 1 )
 
