@@ -18,8 +18,14 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 [node name="Sprite" type="Sprite" parent="." index="1"]
 
 texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
 
-[node name="Button" type="TextureButton" parent="." index="2"]
+[node name="Events" type="Node2D" parent="." index="2"]
+
+position = Vector2( 0, 64 )
+_sections_unfolded = [ "Grow Direction", "Margin", "Rect", "Transform" ]
+
+[node name="Button" type="TextureButton" parent="." index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -42,7 +48,7 @@ shortcut = null
 group = null
 _sections_unfolded = [ "Rect", "Visibility" ]
 
-[node name="Attractivity" type="TextureProgress" parent="." index="3"]
+[node name="Attractivity" type="TextureProgress" parent="." index="4"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -62,7 +68,7 @@ min_value = 0.0
 max_value = 1.0
 step = 0.0
 page = 0.0
-value = 0.0
+value = 0.5
 exp_edit = false
 rounded = false
 texture_under = null
@@ -73,7 +79,7 @@ radial_center_offset = Vector2( 0, 0 )
 nine_patch_stretch = true
 _sections_unfolded = [ "Margin", "Textures" ]
 
-[node name="Population" type="Label" parent="." index="4"]
+[node name="Population" type="Label" parent="." index="5"]
 
 anchor_left = 0.0
 anchor_top = 0.0

@@ -8,11 +8,12 @@
  - [ ] City "Image"
  - [x] Update Population Count
  - [x] Population Increase in Cities
- - [ ] Icons of last actions
+ - [x] Icons of last actions
  - [x] Fix dead cities spawning cars
  - [ ] Airplanes
  - [ ] Fancy display if population count decreases
  - [ ] Regrow trees
+ - [ ] Combo for events
 
 ## Design
 

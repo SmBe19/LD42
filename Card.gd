@@ -161,6 +161,22 @@ func _on_city_built():
 	$"/root/Root/Camera".update_camera_limits()
 	remove_card()
 
+func add_event_icon(city, icon):
+	var event_sprite = Sprite.new()
+	event_sprite.texture = icon
+	event_sprite.scale.x = 0.5
+	event_sprite.scale.y = 0.5
+	var events = city.get_node("Events")
+	events.add_child(event_sprite)
+	var freed = 0
+	while events.get_child_count() - freed > 3:
+		events.get_children()[0].queue_free()
+		freed += 1
+	var childs = events.get_children()
+	var left = -40 * (childs.size() - freed) / 2 + 16
+	for i in range(freed, childs.size()):
+		childs[i].position.x = left + (i - freed) * 40
+
 func _on_city_clicked(city):
 	if allow_city:
 		var pop = city.population
@@ -169,6 +185,7 @@ func _on_city_clicked(city):
 		city.population = max(0, pop)
 		city.event_score += event_score
 		city.events.append(current_event)
+		add_event_icon(city, card_icons[current_event])
 		remove_card()
 
 func _on_road_clicked(road):

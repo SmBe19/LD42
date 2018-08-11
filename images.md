@@ -22,7 +22,7 @@
  - [x] Cursor/Icon Action Tsunami
  - [x] Cursor/Icon Action Bear Attack
  - [x] Cursor/Icon Action Forest Fire
- - [ ] A few small houses
+ - [x] A few small houses
  - [x] Street (Repeatable)
  - [ ] A few cars
  - [ ] Icon Population
