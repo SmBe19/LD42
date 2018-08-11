@@ -3,7 +3,7 @@
 [ext_resource path="res://Road.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id=3]
 
 code = "shader_type particles;
 //uniform float density = 0.5;
@@ -59,7 +59,7 @@ void vertex() {
 
 "
 
-[sub_resource type="ShaderMaterial" id=2]
+[sub_resource type="ShaderMaterial" id=4]
 
 render_priority = 0
 shader = SubResource( 3 )
@@ -67,7 +67,7 @@ shader_param/flow = null
 shader_param/dist = null
 _sections_unfolded = [ "Resource", "shader_param" ]
 
-[node name="Road" type="Node2D" index="0"]
+[node name="Road" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
@@ -83,7 +83,7 @@ emitting = true
 amount = 5
 lifetime = 5.0
 one_shot = false
-preprocess = 0.0
+preprocess = 5.0
 speed_scale = 1.0
 explosiveness = 0.0
 randomness = 0.3
@@ -92,7 +92,7 @@ fract_delta = false
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 1
-process_material = SubResource( 2 )
+process_material = SubResource( 4 )
 texture = ExtResource( 2 )
 normal_map = null
 h_frames = 1
