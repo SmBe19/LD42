@@ -24,6 +24,11 @@ func init(city1, city2):
 	$Cars.process_material = $Cars.process_material.duplicate()
 	$Cars.process_material.set_shader_param("dist", distlength)
 
+func queue_free():
+	.queue_free()
+	city1.neighbors.erase(city2)
+	city2.neighbors.erase(city1)
+
 func _process(delta):
 	var grad = city2.attractivity - city1.attractivity
 	var pd = flow_rate * grad * delta

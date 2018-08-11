@@ -11,10 +11,10 @@ var attractivity = 1.0 setget set_attractivity, get_attractivity
 func set_population(pop):
 	population = pop
 	$Population.text = str(round(pop))
-	
+
 func set_attractivity(attr):
 	null.fail()
-	
+
 func _process(delta):
 	age += delta
 	$Attractivity.value = get_attractivity()
