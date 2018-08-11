@@ -34,7 +34,8 @@ func queue_free():
 	city2.neighbors.erase(city1)
 
 func _ready():
-	bg.call_deferred('clear_trees', self, distance, 80)
+	if bg != null:
+		bg.call_deferred('clear_trees', self, distance, 80)
 
 func _process(delta):
 	var grad = city2.attractivity - city1.attractivity

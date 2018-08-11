@@ -2,13 +2,13 @@
 
 [ext_resource path="res://Road.gd" type="Script" id=1]
 [ext_resource path="res://img/road.png" type="Texture" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://img/car.png" type="Texture" id=3]
 
 [sub_resource type="Shader" id=1]
 
 code = "shader_type particles;
 //uniform float density = 0.5;
-uniform float flow = 0.0;
+uniform float flow = -0.8;
 uniform float dist = 300;
 
 
@@ -35,14 +35,16 @@ uint hash(uint x) {
 }
 
 void vertex() {
-	//uint base_number = NUMBER/uint(trail_divisor);
-	//uint alt_seed = hash(base_number+uint(1)+RANDOM_SEED);
+	//uint base_number = NUMBER;
+	uint alt_seed = hash(NUMBER+uint(1)+RANDOM_SEED);
 	
 	float pi = 3.14159;
 	float degree_to_rad = pi / 180.0;
 	
 	float speed = dist / LIFETIME;
 	float density = 1.0 - 0.95 * exp(-abs(flow));
+	
+
 
 	if (RESTART) {
 		VELOCITY = vec3(sign(flow) * speed, 0.0, 0.0);
@@ -50,7 +52,10 @@ void vertex() {
 		TRANSFORM = EMISSION_TRANSFORM * TRANSFORM;
 		TRANSFORM[3].x = -0.5 * dist * sign(flow);
 		TRANSFORM[3].z = 0.0;
-		if (rand_from_seed(NUMBER) > density) {
+		CUSTOM.z = rand_from_seed(alt_seed);
+		TRANSFORM[3].y = sign(flow) * 8.0;
+		TRANSFORM[0].x = sign(flow);
+		if (rand_from_seed(alt_seed) > density || flow == 0.0) {
 			TRANSFORM[3].z = 100.0;
 		}
 	} else {
@@ -102,8 +107,8 @@ process_material = SubResource( 2 )
 texture = ExtResource( 3 )
 normal_map = null
 h_frames = 1
-v_frames = 1
-_sections_unfolded = [ "Drawing", "Process Material", "Time" ]
+v_frames = 4
+_sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time" ]
 
 [node name="Button" type="TextureButton" parent="." index="2"]
 
