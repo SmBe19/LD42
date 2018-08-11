@@ -6,7 +6,8 @@
 [sub_resource type="Shader" id=1]
 
 code = "shader_type particles;
-uniform float density = 0.5;
+//uniform float density = 0.5;
+uniform float flow = 0.0;
 uniform float dist = 300;
 
 
@@ -40,12 +41,13 @@ void vertex() {
 	float degree_to_rad = pi / 180.0;
 	
 	float speed = dist / LIFETIME;
+	float density = 1.0 - 0.95 * exp(-abs(flow));
 
 	if (RESTART) {
-		VELOCITY = vec3(speed, 0.0, 0.0);
+		VELOCITY = vec3(sign(flow) * speed, 0.0, 0.0);
 		VELOCITY = (EMISSION_TRANSFORM * vec4(VELOCITY,0.0)).xyz;
 		TRANSFORM = EMISSION_TRANSFORM * TRANSFORM;
-		TRANSFORM[3].x = -0.5 * dist;
+		TRANSFORM[3].x = -0.5 * dist * sign(flow);
 		TRANSFORM[3].z = 0.0;
 		if (rand_from_seed(NUMBER) > density) {
 			TRANSFORM[3].z = 100.0;
@@ -60,8 +62,8 @@ void vertex() {
 [sub_resource type="ShaderMaterial" id=2]
 
 render_priority = 0
-shader = SubResource( 1 )
-shader_param/density = 1.0
+shader = SubResource( 3 )
+shader_param/flow = null
 shader_param/dist = null
 _sections_unfolded = [ "Resource", "shader_param" ]
 

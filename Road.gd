@@ -22,8 +22,6 @@ func init(city1, city2):
 	$Cars.process_material.set_shader_param("dist", distance.length())
 
 func _ready():
-	
-
 	pass
 
 func _process(delta):
@@ -35,6 +33,5 @@ func _process(delta):
 	pd = max(pd, -city2.population)
 	city1.population -= pd
 	city2.population += pd
-	print($Cars.process_material)
-	$Cars.process_material.set_shader_param("density", 1.0-0.5*exp(-abs(pd)))
+	$Cars.process_material.set_shader_param("flow", 0.1 * flow_rate * grad)
 	pass
