@@ -18,6 +18,7 @@ func activate_road_building(active):
 
 func activate_city_building(active):
 	city_building_active = active
+	$CityPrototype.visible = active
 
 func create_city(x, y):
 	var city = City.instance()
@@ -82,3 +83,4 @@ func _ready():
 		for b in added_cities:
 			if a != b:
 				create_road(a, b)
+	$"/root/Root/Camera".update_camera_limits()
