@@ -4,7 +4,7 @@
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://img/hearts.png" type="Texture" id=3]
 
-[node name="City" type="Node2D" index="0"]
+[node name="City" type="Node2D"]
 
 script = ExtResource( 1 )
 
