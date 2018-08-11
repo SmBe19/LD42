@@ -15,7 +15,7 @@ func init(city1, city2):
 	self.rotation = diff.angle()
 	distance = diff.length()
 
-	$Sprite.region_rect.size.x = distance
+	$Sprite.region_rect.size.y = distance
 	$Button.margin_left = -distance/2
 	$Button.margin_right = distance/2 - 64
 

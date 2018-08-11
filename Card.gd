@@ -99,6 +99,7 @@ func do_card_action(card):
 			print("do card action: ", card)
 
 func choose_card():
+	card_probabilities[CARD_ROAD] = road_probability()
 	var rval = randf()
 	var probsum = 0
 	for typ in CARD_TYPE.values():
@@ -114,6 +115,11 @@ func choose_card():
 			return typ
 		rval -= card_probabilities[typ]
 
+func road_probability():
+	var c = $"/root/Root/Game/Cities".get_child_count()
+	var r = $"/root/Root/Game/Roads".get_child_count()
+	return (1 - (log(r) / log(c) - 1)) * card_probabilities[CARD_CITY]
+
 func can_build_road():
 	var c = $"/root/Root/Game/Cities".get_child_count()
 	var r = $"/root/Root/Game/Roads".get_child_count()
@@ -123,7 +129,6 @@ func _on_Button_pressed():
 	match state:
 		HIDDEN:
 			current_card = choose_card()
-			do_card_action(current_card)
 			$Viewport/Card.start_rotation()
 			state = ROTATING
 		ROTATING:
@@ -145,6 +150,7 @@ func _on_Card_finished_removing():
 
 func _on_Card_finished_rotating():
 	state = SHOWING
+	do_card_action(current_card)
 	
 func _on_road_built():
 	$"/root/Root/Game".activate_road_building(false)
