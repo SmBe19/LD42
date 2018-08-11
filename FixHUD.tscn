@@ -11,7 +11,7 @@ resource_local_to_scene = true
 flags = 0
 viewport_path = NodePath("Card/Viewport")
 
-[node name="FixHUD" type="Node"]
+[node name="FixHUD" type="Node" index="0"]
 
 [node name="Population" type="Node2D" parent="." index="0"]
 
@@ -69,7 +69,7 @@ _sections_unfolded = [ "Rect", "custom_fonts" ]
 
 [node name="Card" type="Node2D" parent="." index="1"]
 
-position = Vector2( 1150, 570 )
+position = Vector2( 1100, 570 )
 script = ExtResource( 3 )
 _sections_unfolded = [ "Transform" ]
 

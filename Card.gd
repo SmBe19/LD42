@@ -7,7 +7,7 @@ var state = HIDDEN
 var custom_next = false
 var current_card = CARD_ROAD
 var card_probabilities = {
-	CARD_ROAD: 2,
+	CARD_ROAD: 4,
 	CARD_CITY: 4,
 	CARD_STORM: 1,
 	CARD_QUAKE: 1,
