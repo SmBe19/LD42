@@ -1,46 +1,69 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Road.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
-[sub_resource type="ParticlesMaterial" id=1]
+[sub_resource type="Shader" id=3]
+
+code = "shader_type particles;
+uniform float density = 0.5;
+uniform float dist = 300;
+
+
+
+float rand_from_seed(inout uint seed) {
+	int k;
+	int s = int(seed);
+	if (s == 0)
+	s = 305420679;
+	k = s / 127773;
+	s = 16807 * (s - k * 127773) - 2836 * k;
+	if (s < 0)
+		s += 2147483647;
+	seed = uint(s);
+	return float(seed % uint(65536))/65535.0;
+}
+
+
+uint hash(uint x) {
+	x = ((x >> uint(16)) ^ x) * uint(73244475);
+	x = ((x >> uint(16)) ^ x) * uint(73244475);
+	x = (x >> uint(16)) ^ x;
+	return x;
+}
+
+void vertex() {
+	//uint base_number = NUMBER/uint(trail_divisor);
+	//uint alt_seed = hash(base_number+uint(1)+RANDOM_SEED);
+	
+	float pi = 3.14159;
+	float degree_to_rad = pi / 180.0;
+	
+	float speed = dist / LIFETIME;
+
+	if (RESTART) {
+		VELOCITY = vec3(speed, 0.0, 0.0);
+		VELOCITY = (EMISSION_TRANSFORM * vec4(VELOCITY,0.0)).xyz;
+		TRANSFORM = EMISSION_TRANSFORM * TRANSFORM;
+		TRANSFORM[3].x = -0.5 * dist;
+		TRANSFORM[3].z = 0.0;
+		if (rand_from_seed(NUMBER) > density) {
+			TRANSFORM[3].z = 100.0;
+		}
+	} else {
+	}
+	
+}
+
+"
+
+[sub_resource type="ShaderMaterial" id=4]
 
 render_priority = 0
-trail_divisor = 1
-emission_shape = 0
-flag_align_y = false
-flag_rotate_y = false
-flag_disable_z = true
-spread = 0.0
-flatness = 0.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 100.0
-initial_velocity_random = 0.0
-angular_velocity = 0.0
-angular_velocity_random = 0.0
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-linear_accel = 0.0
-linear_accel_random = 0.0
-radial_accel = 0.0
-radial_accel_random = 0.0
-tangential_accel = 0.0
-tangential_accel_random = 0.0
-damping = 0.0
-damping_random = 0.0
-angle = 0.0
-angle_random = 0.0
-scale = 1.0
-scale_random = 0.0
-color = Color( 0.334296, 0.0569973, 0.860996, 1 )
-hue_variation = 0.5
-hue_variation_random = 1.0
-anim_speed = 0.0
-anim_speed_random = 0.0
-anim_offset = 0.0
-anim_offset_random = 0.0
-anim_loop = false
-_sections_unfolded = [ "Angular Velocity", "Color", "Emission Shape", "Flags", "Gravity", "Hue Variation", "Initial Velocity", "Spread" ]
+shader = SubResource( 3 )
+shader_param/density = 1.0
+shader_param/dist = null
+_sections_unfolded = [ "Resource", "shader_param" ]
 
 [node name="Road" type="Node2D" index="0"]
 
@@ -52,26 +75,26 @@ _sections_unfolded = [ "Transform" ]
 visible = false
 texture = ExtResource( 2 )
 
-[node name="Particles2D" type="Particles2D" parent="." index="1"]
+[node name="Cars" type="Particles2D" parent="." index="1"]
 
 emitting = true
-amount = 10
+amount = 5
 lifetime = 5.0
 one_shot = false
-preprocess = 0.0
+preprocess = 5.0
 speed_scale = 1.0
 explosiveness = 0.0
-randomness = 0.7
+randomness = 0.3
 fixed_fps = 0
-fract_delta = true
+fract_delta = false
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
-draw_order = 0
-process_material = SubResource( 1 )
+draw_order = 1
+process_material = SubResource( 4 )
 texture = ExtResource( 2 )
 normal_map = null
-h_frames = 2
-v_frames = 2
-_sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time" ]
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Drawing", "Process Material", "Time" ]
 
 
