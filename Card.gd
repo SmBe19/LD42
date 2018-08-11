@@ -4,8 +4,14 @@ enum CARD_STATE { HIDDEN, ROTATING, SHOWING, REMOVING }
 enum CARD_TYPE { CARD_ROAD, CARD_CITY, CARD_STORM, CARD_QUAKE, CARD_PLAGUE, CARD_HEAT, CARD_METEOR, CARD_TSUNAMI, CARD_BEAR, CARD_FIRE }
 
 var state = HIDDEN
-var custom_next = false
 var current_card = CARD_ROAD
+
+var current_event = null
+var allow_city = false
+var allow_road = false
+var pop_kill_abs = 0
+var pop_kill_rel = 0
+var event_score = 0
 
 var card_probabilities = {
 	CARD_ROAD: 3,
@@ -48,13 +54,47 @@ var card_icons = {
 
 func do_card_action(card):
 	$"/root/Root/Game".activate_item_preview(true)
+	
+	current_event = card
+	allow_city = true
+	allow_road = false
+	pop_kill_abs = 5
+	pop_kill_rel = 0
+	event_score = 0
+
 	match card:
 		CARD_ROAD:
 			$"/root/Root/Game".activate_road_building(true)
-			custom_next = true
 		CARD_CITY:
 			$"/root/Root/Game".activate_city_building(true)
-			custom_next = true
+		CARD_STORM:
+			pop_kill_rel = 0.05
+			event_score = 0.1
+		CARD_QUAKE:
+			allow_road = true
+			pop_kill_rel = 0.1
+			event_score = 0.5
+		CARD_PLAGUE:
+			pop_kill_rel = 0.7
+			event_score = 0.8
+		CARD_HEAT:
+			pop_kill_abs = 20 + randi() % 10
+			event_score = 0.05
+		CARD_METEOR:
+			allow_road = true
+			pop_kill_abs = 50 + randi() % 20
+			event_score = 0.1
+		CARD_TSUNAMI:
+			allow_road = true
+			pop_kill_abs = 20 + randi() % 10
+			event_score = 0.5
+		CARD_BEAR:
+			pop_kill_rel = 0.2
+			pop_kill_abs = 75 + randi() % 25
+			event_score = 0.1
+		CARD_FIRE:
+			pop_kill_rel = 0.4
+			event_score = 0.5
 		_:
 			print("do card action: ", card)
 
@@ -89,15 +129,15 @@ func _on_Button_pressed():
 		ROTATING:
 			return
 		SHOWING:
-			if not custom_next:
-				remove_card()
+			return
 		REMOVING:
 			return
 
 func remove_card():
 	$Viewport/Card.start_remove()
-	custom_next = false
 	state = REMOVING
+	allow_city = false
+	allow_road = false
 	$"/root/Root/Game".activate_item_preview(false)
 
 func _on_Card_finished_removing():
@@ -116,10 +156,19 @@ func _on_city_built():
 	remove_card()
 
 func _on_city_clicked(city):
-	pass
+	if allow_city:
+		var pop = city.population
+		pop -= pop_kill_abs
+		pop -= pop_kill_rel * pop
+		city.population = max(0, pop)
+		city.event_score += event_score
+		city.events.append(current_event)
+		remove_card()
 
 func _on_road_clicked(road):
-	pass
+	if allow_road:
+		road.queue_free()
+		remove_card()
 
 func _ready():
 	randomize()
