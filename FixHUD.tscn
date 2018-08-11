@@ -11,7 +11,7 @@ resource_local_to_scene = true
 flags = 0
 viewport_path = NodePath("Card/Viewport")
 
-[node name="FixHUD" type="Node" index="0"]
+[node name="FixHUD" type="Node"]
 
 [node name="Population" type="Node2D" parent="." index="0"]
 

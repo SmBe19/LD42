@@ -24,7 +24,8 @@ script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="ItemPrototype" index="0"]
 
+position = Vector2( 32, -32 )
 texture = ExtResource( 4 )
-_sections_unfolded = [ "Visibility" ]
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 

@@ -69,32 +69,32 @@ func do_card_action(card):
 			$"/root/Root/Game".activate_city_building(true)
 		CARD_STORM:
 			pop_kill_rel = 0.05
-			event_score = 0.1
+			event_score = 0.2
 		CARD_QUAKE:
 			allow_road = true
 			pop_kill_rel = 0.1
-			event_score = 0.5
+			event_score = 0.8
 		CARD_PLAGUE:
 			pop_kill_rel = 0.7
-			event_score = 0.8
+			event_score = 1.4
 		CARD_HEAT:
 			pop_kill_abs = 20 + randi() % 10
-			event_score = 0.05
+			event_score = 0.1
 		CARD_METEOR:
 			allow_road = true
 			pop_kill_abs = 50 + randi() % 20
-			event_score = 0.1
+			event_score = 0.2
 		CARD_TSUNAMI:
 			allow_road = true
 			pop_kill_abs = 20 + randi() % 10
-			event_score = 0.5
+			event_score = 0.8
 		CARD_BEAR:
 			pop_kill_rel = 0.2
 			pop_kill_abs = 75 + randi() % 25
-			event_score = 0.1
+			event_score = 0.4
 		CARD_FIRE:
 			pop_kill_rel = 0.4
-			event_score = 0.5
+			event_score = 0.8
 		_:
 			print("do card action: ", card)
 

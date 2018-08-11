@@ -6,8 +6,8 @@
  - [x] Implement Background "Image"
  - [ ] Add images to Background "Image"
  - [ ] City "Image"
- - [ ] Update Population Count
- - [ ] Population Increase in Cities
+ - [x] Update Population Count
+ - [x] Population Increase in Cities
  - [ ] Icons of last actions
  - [ ] Fix dead cities spawning cars
  - [ ] Airplanes
@@ -16,6 +16,9 @@
 ## Design
 
  - [ ] Make Game Fun
+ - [ ] Give roads more meaning
+ - [ ] Adjust action probabilities
+ - [ ] Save up one card
 
 ## Music
 

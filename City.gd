@@ -11,20 +11,23 @@ var base_attractivity = 1.0
 var attractivity = 1.0 setget set_attractivity, get_attractivity
 
 func set_population(pop):
-	var diff = pop - population
-	population = pop
+	var pospop = max(0, pop)
+	var diff = pospop - population
+	population = max(0, pospop)
 	$"/root/Root/Game".population += diff
 	$Population.text = str(round(pop))
 
-func set_attractivity(attr):
-	null.fail()
-
 func _process(delta):
 	age += delta
-	$Attractivity.value = get_attractivity()
+	var attr = get_attractivity()
+	self.population += self.population * attr * attr * delta * 0.01
+	$Attractivity.value = attr
 
+func set_attractivity(attr):
+	null.fail()
+	
 func get_attractivity():
-	return (base_attractivity + 0.3 * neighbors.size() + log(10 + (age + sin(age)) / 10) - event_score - log(max(100,population)) + log(100) - log(10)) / 10.0
+	return clamp((base_attractivity + 0.7 * neighbors.size() + log(10 + (age + sin(age)) / 7) - event_score - log(max(100,population)) + log(100) - log(10)) / 10.0, 0, 1)
 
 func connected(other):
 	return other in neighbors

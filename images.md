@@ -1,6 +1,6 @@
 # Required Images
 
- - [ ] Card Background
+ - [x] Card Background
  - [x] Card Foreground
  - [x] Card Road
  - [x] Card City
@@ -23,7 +23,7 @@
  - [x] Cursor/Icon Action Bear Attack
  - [x] Cursor/Icon Action Forest Fire
  - [ ] A few small houses
- - [ ] Street (Repeatable)
+ - [x] Street (Repeatable)
  - [ ] A few cars
  - [ ] Icon Population
  - [ ] Heart
