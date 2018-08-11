@@ -42,7 +42,7 @@ void vertex() {
 	float degree_to_rad = pi / 180.0;
 	
 	float speed = dist / LIFETIME;
-	float density = 1.0 - 0.95 * exp(-abs(flow));
+	float density = 1.0 - 0.95 * exp(-3.0*abs(flow));
 	
 
 
