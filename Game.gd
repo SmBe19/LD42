@@ -20,7 +20,9 @@ func activate_road_building(active):
 
 func activate_city_building(active):
 	city_building_active = active
-	$CityPrototype.visible = active
+
+func activate_item_preview(active):
+	$ItemPrototype.visible = active
 
 func create_city(x, y):
 	var city = City.instance()
@@ -105,9 +107,9 @@ func _input(event):
 		if city_building_active:
 			var global = local_to_global(event.position)
 			if city_dist(global.x, global.y) > min_dist:
-				$CityPrototype/Sprite.modulate = Color(1, 1, 1, 1)
+				$ItemPrototype/Sprite.modulate = Color(1, 1, 1, 1)
 			else:
-				$CityPrototype/Sprite.modulate = Color(0.8, 0.2, 0.2, 0.5)
+				$ItemPrototype/Sprite.modulate = Color(0.8, 0.2, 0.2, 0.5)
 
 func _ready():
 	init_cam_pos = $"/root/Root/Camera".get_camera_screen_center()

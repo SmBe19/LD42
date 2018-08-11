@@ -6,6 +6,7 @@ enum CARD_TYPE { CARD_ROAD, CARD_CITY, CARD_STORM, CARD_QUAKE, CARD_PLAGUE, CARD
 var state = HIDDEN
 var custom_next = false
 var current_card = CARD_ROAD
+
 var card_probabilities = {
 	CARD_ROAD: 4,
 	CARD_CITY: 4,
@@ -32,7 +33,21 @@ var card_textures = {
 	CARD_FIRE: preload("res://img/card_fire.png"),
 }
 
+var card_icons = {
+	CARD_ROAD: preload("res://img/new_road.png"),
+	CARD_CITY: preload("res://img/new_city.png"),
+	CARD_STORM: preload("res://img/icon_storm.png"),
+	CARD_QUAKE: preload("res://img/icon_quake.png"),
+	CARD_PLAGUE: preload("res://img/icon_plague.png"),
+	CARD_HEAT: preload("res://img/icon_heat.png"),
+	CARD_METEOR: preload("res://img/icon_meteor.png"),
+	CARD_TSUNAMI: preload("res://img/icon_tsunami.png"),
+	CARD_BEAR: preload("res://img/icon_bear.png"),
+	CARD_FIRE: preload("res://img/icon_fire.png"),
+}
+
 func do_card_action(card):
+	$"/root/Root/Game".activate_item_preview(true)
 	match card:
 		CARD_ROAD:
 			$"/root/Root/Game".activate_road_building(true)
@@ -55,6 +70,7 @@ func choose_card():
 				rval -= card_probabilities[typ]
 				continue
 			$Viewport/Card.set_card_image(card_textures[typ])
+			$"/root/Root/Game/ItemPrototype/Sprite".texture = card_icons[typ]
 			return typ
 		rval -= card_probabilities[typ]
 
@@ -82,6 +98,7 @@ func remove_card():
 	$Viewport/Card.start_remove()
 	custom_next = false
 	state = REMOVING
+	$"/root/Root/Game".activate_item_preview(false)
 
 func _on_Card_finished_removing():
 	state = HIDDEN
