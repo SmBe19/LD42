@@ -179,11 +179,16 @@ func add_event_icon(city, icon):
 
 func _on_city_clicked(city):
 	if allow_city:
+		var multiplier = 1
+		for i in range(min(3, city.events.size())):
+			if city.events[-i-1] == current_event:
+				multiplier += 1
+		print("Multiplier: ", multiplier)
 		var pop = city.population
-		pop -= pop_kill_abs
-		pop -= pop_kill_rel * pop
+		pop -= pop_kill_abs * multiplier
+		pop -= pop_kill_rel * pop * multiplier
 		city.population = max(0, pop)
-		city.event_score += event_score
+		city.event_score += event_score * multiplier
 		city.events.append(current_event)
 		add_event_icon(city, card_icons[current_event])
 		remove_card()

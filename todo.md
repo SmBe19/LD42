@@ -13,7 +13,7 @@
  - [ ] Airplanes
  - [ ] Fancy display if population count decreases
  - [ ] Regrow trees
- - [ ] Combo for events
+ - [x] Combo for events
 
 ## Design
 

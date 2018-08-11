@@ -5,7 +5,7 @@
 [ext_resource path="res://CityPrototyp.gd" type="Script" id=3]
 [ext_resource path="res://img/new_city.png" type="Texture" id=4]
 
-[node name="Game" type="Node"]
+[node name="Game" type="Node" index="0"]
 
 script = ExtResource( 1 )
 city_count = 5
