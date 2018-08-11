@@ -9,7 +9,9 @@
  - [ ] Update Population Count
  - [ ] Population Increase in Cities
  - [ ] Icons of last actions
+ - [ ] Fix dead cities spawning cars
  - [ ] Airplanes
+ - [ ] Fancy display if population count decreases
 
 ## Design
 

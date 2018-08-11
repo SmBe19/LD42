@@ -11,7 +11,9 @@ var base_attractivity = 1.0
 var attractivity = 1.0 setget set_attractivity, get_attractivity
 
 func set_population(pop):
+	var diff = pop - population
 	population = pop
+	$"/root/Root/Game".population += diff
 	$Population.text = str(round(pop))
 
 func set_attractivity(attr):
@@ -36,3 +38,4 @@ func set_marked(marked):
 func _ready():
 	bg.call_deferred('clear_trees', self, 160, 160)
 	base_attractivity = randf() * 3 + 2
+	$"/root/Root/Game".population += population

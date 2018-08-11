@@ -11,11 +11,17 @@ export var min_dist = 200
 var Road = preload("res://Road.tscn")
 var City = preload("res://City.tscn")
 
+var population = 0 setget set_population
+
 var selection = null
 var road_building_active = false
 var city_building_active = false
 
 var init_cam_pos
+
+func set_population(pop):
+	population = pop
+	$"/root/Root/HUD/FixHUD/Population/PopLabel".text = str(round(pop))
 
 func activate_road_building(active):
 	road_building_active = active

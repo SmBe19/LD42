@@ -38,7 +38,7 @@ func on_updated_camera_limits():
 		camera.limit_top,
 		camera.limit_right - camera.limit_left,
 		camera.limit_bottom - camera.limit_top)
-		
+
 func clear_trees(node, w, h):
 	var inv_tr = node.transform.affine_inverse()
 	for tree in get_children():
