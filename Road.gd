@@ -43,8 +43,7 @@ func _process(delta):
 	pd = max(pd, -city2.population)
 	city1.population -= pd
 	city2.population += pd
-	$Cars.process_material.set_shader_param("flow", 0.1 * flow_rate * grad)
-	pass
+	$Cars.process_material.set_shader_param("flow", 0.1 * pd / delta)
 
 
 func _on_Button_pressed():
