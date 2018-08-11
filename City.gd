@@ -1,5 +1,7 @@
 extends Node2D
 
+onready var bg = $"/root/Root/Game/GameBackground"
+
 var neighbors = []
 var population = 100 setget set_population
 var age = 0.0
@@ -32,4 +34,5 @@ func set_marked(marked):
 	$Highlight.visible = marked
 
 func _ready():
+	bg.call_deferred('clear_trees', self, 160, 160)
 	base_attractivity = randf() * 3 + 2
