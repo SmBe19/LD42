@@ -32,4 +32,4 @@ func set_marked(marked):
 	$Highlight.visible = marked
 
 func _ready():
-	attractivity = randf() * 2 + 5
+	base_attractivity = randf() * 3 + 2

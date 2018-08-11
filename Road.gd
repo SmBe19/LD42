@@ -20,11 +20,9 @@ func init(city1, city2):
 	city1.neighbors.push_back(city2)
 	city2.neighbors.push_back(city1)
 
-	$Cars.lifetime = distance / 100
+	$Cars.lifetime = distlength / 100
 	$Cars.process_material = $Cars.process_material.duplicate()
 	$Cars.process_material.set_shader_param("dist", distlength)
-
-	$Area/CollisionShape2D.shape.extents.x = 0.5 * distlength
 
 func _process(delta):
 	var grad = city2.attractivity - city1.attractivity
