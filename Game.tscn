@@ -1,27 +1,32 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
-[ext_resource path="res://CityPrototyp.gd" type="Script" id=2]
-[ext_resource path="res://img/new_city.png" type="Texture" id=3]
+[ext_resource path="res://GameBackground.tscn" type="PackedScene" id=2]
+[ext_resource path="res://CityPrototyp.gd" type="Script" id=3]
+[ext_resource path="res://img/new_city.png" type="Texture" id=4]
 
-[node name="Game" type="Node"]
+[node name="Game" type="Node" index="0"]
 
 script = ExtResource( 1 )
 city_count = 5
 min_dist = 200
 
-[node name="Roads" type="Node" parent="." index="0"]
+[node name="GameBackground" parent="." index="0" instance=ExtResource( 2 )]
 
-[node name="Cities" type="Node" parent="." index="1"]
+scale = Vector2( 1, 1 )
 
-[node name="ItemPrototype" type="Node2D" parent="." index="2"]
+[node name="Roads" type="Node" parent="." index="1"]
+
+[node name="Cities" type="Node" parent="." index="2"]
+
+[node name="ItemPrototype" type="Node2D" parent="." index="3"]
 
 visible = false
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="ItemPrototype" index="0"]
 
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 _sections_unfolded = [ "Visibility" ]
 
 
