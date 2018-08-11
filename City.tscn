@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://City.gd" type="Script" id=1]
 [ext_resource path="res://Highlight.gd" type="Script" id=2]
-[ext_resource path="res://img/hearts.png" type="Texture" id=3]
+[ext_resource path="res://img/circle.png" type="Texture" id=3]
+[ext_resource path="res://img/hearts.png" type="Texture" id=4]
 
-[node name="City" type="Node2D"]
+[node name="City" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 
@@ -19,16 +20,40 @@ color = Color( 0.974124, 0.658913, 0.186161, 1 )
 
 [node name="Houses" type="YSort" parent="." index="1"]
 
-texture = ExtResource( 2 )
-_sections_unfolded = [ "Transform" ]
 sort_enabled = true
+_sections_unfolded = [ "Transform" ]
 
-[node name="Events" type="Node2D" parent="." index="2"]
+[node name="EventsBG" type="NinePatchRect" parent="." index="2"]
+
+visible = false
+modulate = Color( 1, 1, 1, 0.705882 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 48.0
+margin_right = 32.0
+margin_bottom = 80.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 32, 32 )
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
+_sections_unfolded = [ "Patch Margin", "Rect", "Region", "Visibility" ]
+
+[node name="Events" type="Node2D" parent="." index="3"]
 
 position = Vector2( 0, 64 )
 _sections_unfolded = [ "Grow Direction", "Margin", "Rect", "Transform" ]
 
-[node name="Button" type="TextureButton" parent="." index="3"]
+[node name="Button" type="TextureButton" parent="." index="4"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -51,7 +76,7 @@ shortcut = null
 group = null
 _sections_unfolded = [ "Rect", "Visibility" ]
 
-[node name="Attractivity" type="TextureProgress" parent="." index="4"]
+[node name="Attractivity" type="TextureProgress" parent="." index="5"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -76,21 +101,49 @@ exp_edit = false
 rounded = false
 texture_under = null
 texture_over = null
-texture_progress = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
 radial_fill_degrees = 360.0
 radial_center_offset = Vector2( 0, 0 )
 nine_patch_stretch = true
 _sections_unfolded = [ "Rect", "Textures" ]
 
-[node name="Population" type="Label" parent="." index="5"]
+[node name="PopulationBG" type="NinePatchRect" parent="." index="6"]
 
+modulate = Color( 1, 1, 1, 0.705882 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = -48.0
-margin_right = 40.0
-margin_bottom = -34.0
+margin_left = -20.0
+margin_top = -46.0
+margin_right = 60.0
+margin_bottom = -14.0
+rect_scale = Vector2( 0.5, 0.5 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 32, 32 )
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
+_sections_unfolded = [ "Patch Margin", "Rect", "Region", "Visibility" ]
+
+[node name="Population" type="Label" parent="." index="7"]
+
+modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -32.0
+margin_top = -44.0
+margin_right = 32.0
+margin_bottom = -30.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -98,10 +151,11 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 text = "100"
+align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Rect" ]
+_sections_unfolded = [ "Rect", "Visibility" ]
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 

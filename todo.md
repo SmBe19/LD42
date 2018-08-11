@@ -5,15 +5,15 @@
  - [x] Implement Actions
  - [x] Implement Background "Image"
  - [ ] Add images to Background "Image"
- - [ ] City "Image"
+ - [x] City "Image"
  - [x] Update Population Count
  - [x] Population Increase in Cities
  - [x] Icons of last actions
  - [x] Fix dead cities spawning cars
- - [ ] Airplanes
  - [ ] Fancy display if population count decreases
  - [ ] Regrow trees
  - [x] Combo for events
+ - [ ] Car remove white background
 
 ## Design
 

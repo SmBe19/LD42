@@ -7,7 +7,7 @@ onready var bg = $"/root/Root/Game/GameBackground"
 
 onready var random_offset = rand_range(0, TAU)
 var neighbors = []
-var population = 300 setget set_population
+var population = 20 setget set_population
 var age = 0.0
 var events = []
 var event_score = 0.0
@@ -53,5 +53,5 @@ func set_marked(marked):
 func _ready():
 	bg.call_deferred('clear_trees', self, 160, 160)
 	base_attractivity = randf() * 3 + 2
-	set_population(population)
 	$"/root/Root/Game".population += population
+	set_population(population + 1 + randi() % 130)

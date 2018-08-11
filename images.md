@@ -24,14 +24,12 @@
  - [x] Cursor/Icon Action Forest Fire
  - [x] A few small houses
  - [x] Street (Repeatable)
- - [ ] A few cars
- - [ ] Icon Population
- - [ ] Heart
+ - [x] A few cars
+ - [x] Icon Population
+ - [x] Heart
  - [ ] Background image
  - [ ] A few trees for Background
  - [ ] Game Logo
- - [ ] A few large houses
- - [ ] Airport
- - [ ] Airplane
+ - [x] A few large houses
  - [ ] Field for Background
  - [ ] Forest for Background

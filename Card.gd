@@ -14,15 +14,15 @@ var pop_kill_rel = 0
 var event_score = 0
 
 var card_probabilities = {
-	CARD_ROAD: 3,
-	CARD_CITY: 3,
+	CARD_ROAD: 2,
+	CARD_CITY: 2,
 	CARD_STORM: 1,
 	CARD_QUAKE: 1,
-	CARD_PLAGUE: 1,
-	CARD_HEAT: 1,
+	CARD_PLAGUE: 0.7,
+	CARD_HEAT: 1.4,
 	CARD_METEOR: 1,
 	CARD_TSUNAMI: 1,
-	CARD_BEAR: 1,
+	CARD_BEAR: 0.5,
 	CARD_FIRE: 1,
 }
 
@@ -76,22 +76,22 @@ func do_card_action(card):
 			event_score = 0.8
 		CARD_PLAGUE:
 			pop_kill_rel = 0.7
-			event_score = 1.4
+			event_score = 1.7
 		CARD_HEAT:
 			pop_kill_abs = 20 + randi() % 10
 			event_score = 0.1
 		CARD_METEOR:
 			allow_road = true
-			pop_kill_abs = 50 + randi() % 20
-			event_score = 0.2
+			pop_kill_abs = 50 + randi() % 50
+			event_score = 2.0
 		CARD_TSUNAMI:
 			allow_road = true
 			pop_kill_abs = 20 + randi() % 10
 			event_score = 0.8
 		CARD_BEAR:
-			pop_kill_rel = 0.2
-			pop_kill_abs = 75 + randi() % 25
-			event_score = 0.4
+			pop_kill_rel = 0.5
+			pop_kill_abs = 50 + randi() % 150
+			event_score = 1.2
 		CARD_FIRE:
 			pop_kill_rel = 0.4
 			event_score = 0.8
@@ -167,13 +167,17 @@ func add_event_icon(city, icon):
 	event_sprite.scale.x = 0.5
 	event_sprite.scale.y = 0.5
 	var events = city.get_node("Events")
+	var eventsBG = city.get_node("EventsBG")
 	events.add_child(event_sprite)
 	var freed = 0
 	while events.get_child_count() - freed > 3:
 		events.get_children()[0].queue_free()
 		freed += 1
 	var childs = events.get_children()
-	var left = -40 * (childs.size() - freed) / 2 + 16
+	var left = -40 * (childs.size() - freed) / 2 + 20
+	eventsBG.rect_position.x = left - 24
+	eventsBG.rect_size.x = 40 * (childs.size() - freed) + 8
+	eventsBG.visible = (childs.size() - freed) > 0
 	for i in range(freed, childs.size()):
 		childs[i].position.x = left + (i - freed) * 40
 
