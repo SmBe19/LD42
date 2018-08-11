@@ -69,8 +69,9 @@ _sections_unfolded = [ "Rect", "custom_fonts" ]
 
 [node name="Card" type="Node2D" parent="." index="1"]
 
-position = Vector2( 1152.43, 606.276 )
+position = Vector2( 1150, 570 )
 script = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="Viewport" type="Viewport" parent="Card" index="0"]
 

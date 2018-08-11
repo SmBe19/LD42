@@ -4,6 +4,7 @@ enum CARD_STATE { HIDDEN, ROTATING, SHOWING, REMOVING }
 enum CARD_TYPE { CARD_ROAD, CARD_CITY, CARD_STORM, CARD_QUAKE, CARD_PLAGUE, CARD_HEAT, CARD_METEOR, CARD_TSUNAMI, CARD_BEAR, CARD_FIRE }
 
 var state = HIDDEN
+var custom_next = false
 var current_card = CARD_ROAD
 var card_probabilities = {
 	CARD_ROAD: 2,
@@ -34,11 +35,13 @@ var card_textures = {
 func do_card_action(card):
 	match card:
 		CARD_ROAD:
-			$"../../Game".activate_road_building(true)
+			$"/root/Root/Game".activate_road_building(true)
+			custom_next = true
 		CARD_CITY:
-			$"../../Game".activate_city_building(true)
+			$"/root/Root/Game".activate_city_building(true)
+			custom_next = true
 		_:
-			print(card)
+			print("do card action: ", card)
 
 func choose_card():
 	var rval = randf()
@@ -63,12 +66,14 @@ func _on_Button_pressed():
 		ROTATING:
 			return
 		SHOWING:
-			remove_card()
+			if not custom_next:
+				remove_card()
 		REMOVING:
 			return
 
 func remove_card():
 	$Viewport/Card.start_remove()
+	custom_next = false
 	state = REMOVING
 
 func _on_Card_finished_removing():
@@ -78,14 +83,15 @@ func _on_Card_finished_rotating():
 	state = SHOWING
 	
 func _on_road_built():
-	$"../../Game".activate_road_building(false)
+	$"/root/Root/Game".activate_road_building(false)
 	remove_card()
 
 func _on_city_built():
-	$"../../Game".activate_city_building(false)
+	$"/root/Root/Game".activate_city_building(false)
+	$"/root/Root/Camera".update_camera_limits()
 	remove_card()
 
 func _ready():
 	randomize()
-	$"../../Game".connect("road_built", self, "_on_road_built")
-	$"../../Game".connect("city_built", self, "_on_city_built")
+	$"/root/Root/Game".connect("road_built", self, "_on_road_built")
+	$"/root/Root/Game".connect("city_built", self, "_on_city_built")
