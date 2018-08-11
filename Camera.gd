@@ -2,6 +2,8 @@ extends Camera2D
 
 export var speed = 400.0
 
+signal updated_camera_limits
+
 func _process(delta):
 	var vp = get_viewport_rect().size
 	var pos = get_local_mouse_position()
@@ -31,3 +33,4 @@ func update_camera_limits():
 	limit_right = maxx + 1000
 	limit_top = miny - 500
 	limit_bottom = maxy + 500
+	emit_signal("updated_camera_limits")
