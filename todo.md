@@ -2,13 +2,18 @@
 
 ## Coding
 
- - [ ] Implement Actions
- - [ ] Implement Background "Image"
+ - [x] Implement Actions
+ - [x] Implement Background "Image"
+ - [ ] Add images to Background "Image"
  - [ ] City "Image"
  - [ ] Update Population Count
  - [ ] Population Increase in Cities
- - [ ] Airplanes
  - [ ] Icons of last actions
+ - [ ] Airplanes
+
+## Design
+
+ - [ ] Make Game Fun
 
 ## Music
 

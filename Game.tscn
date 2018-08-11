@@ -13,8 +13,6 @@ min_dist = 200
 
 [node name="GameBackground" parent="." index="0" instance=ExtResource( 2 )]
 
-scale = Vector2( 1, 1 )
-
 [node name="Roads" type="Node" parent="." index="1"]
 
 [node name="Cities" type="Node" parent="." index="2"]

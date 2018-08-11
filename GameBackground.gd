@@ -43,7 +43,6 @@ func clear_trees(node, w, h):
 	var inv_tr = node.transform.affine_inverse()
 	for tree in get_children():
 		var pos = inv_tr.xform(tree.position)
-		print(pos)
 		if Rect2(-0.5*Vector2(w,h), Vector2(w,h)).has_point(pos):
 			#print("removing ",tree)
 			remove_child(tree)
