@@ -10,16 +10,20 @@ func init(city1, city2):
 	var distance = (city2.position - city1.position)
 	self.rotation = distance.angle()
 	
-	$Sprite.scale.x = distance.length() / 64.0
+	distance = distance.length()
+	
+	$Sprite.scale.x = distance / 64.0
 	
 	self.city1 = city1
 	self.city2 = city2
 	city1.neighbors.push_back(city2)
 	city2.neighbors.push_back(city1)
 	
-	$Cars.lifetime = distance.length() / 100
+	$Cars.lifetime = distance / 100
 	$Cars.process_material = $Cars.process_material.duplicate()
-	$Cars.process_material.set_shader_param("dist", distance.length())
+	$Cars.process_material.set_shader_param("dist", distance)
+	
+	$Area/CollisionShape2D.shape.extents.x = 0.5 * distance
 
 func _ready():
 	pass
