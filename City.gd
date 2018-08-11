@@ -1,12 +1,20 @@
 extends Node2D
 
 var neighbors = []
-var population = 100
-var attractivity = 0 setget set_attractivity
+var population = 100 setget set_population
+var attractivity = 0 setget set_attractivity, get_attractivity
 
+func set_population(pop):
+	population = pop
+	$Population.text = str(round(pop))
+	
 func set_attractivity(attr):
+	print("no")
 	attractivity = attr
 	$Attractivity.value = attr
+
+func get_attractivity():
+	return attractivity - log(max(100,population)) + log(100)
 
 func _ready():
 	pass
