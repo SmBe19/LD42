@@ -20,7 +20,7 @@ resource_local_to_scene = true
 flags = 0
 viewport_path = NodePath("SavedCard/Viewport")
 
-[node name="FixHUD" type="Node"]
+[node name="FixHUD" type="Node" index="0"]
 
 [node name="Population" type="Node2D" parent="." index="0"]
 
@@ -160,6 +160,24 @@ enabled_focus_mode = 2
 shortcut = null
 group = null
 _sections_unfolded = [ "Rect" ]
+
+[node name="CardSound" type="AudioStreamPlayer" parent="Card" index="3"]
+
+stream = null
+volume_db = -12.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="ActionSound" type="AudioStreamPlayer" parent="Card" index="4"]
+
+stream = null
+volume_db = -12.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 [node name="SavedCard" type="Node2D" parent="." index="2"]
 

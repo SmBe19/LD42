@@ -54,6 +54,33 @@ var card_icons = {
 	CARD_FIRE: preload("res://img/icon_fire.png"),
 }
 
+var card_sounds = {
+	CARD_ROAD: preload("res://snd/build.wav"),
+	CARD_CITY: preload("res://snd/build.wav"),
+	CARD_STORM: preload("res://snd/wave.wav"),
+	CARD_QUAKE: preload("res://snd/quake.wav"),
+	CARD_PLAGUE: preload("res://snd/ambulance.wav"),
+	CARD_HEAT: preload("res://snd/hot.wav"),
+	CARD_METEOR: preload("res://snd/meteor.wav"),
+	CARD_TSUNAMI: preload("res://snd/water.wav"),
+	CARD_BEAR: preload("res://snd/bear.wav"),
+	CARD_FIRE: preload("res://snd/firetruck.wav"),
+}
+
+var some_card_audio = [
+	preload("res://snd/card.wav"),
+	preload("res://snd/card2.wav"),
+	preload("res://snd/card3.wav"),
+]
+
+func play_card_audio(card):
+	$ActionSound.stream = card_sounds[card]
+	$ActionSound.play(0)
+
+func play_some_card_audio():
+	$CardSound.stream = some_card_audio[randi() % some_card_audio.size()]
+	$CardSound.play(0)
+
 func do_card_action(card):
 	$"/root/Root/Game".activate_item_preview(true)
 	$"/root/Root/Game/ItemPrototype/Sprite".texture = card_icons[card]
@@ -152,6 +179,7 @@ func _on_Button_pressed():
 		HIDDEN:
 			current_card = choose_card()
 			$Viewport/Card.start_rotation()
+			play_some_card_audio()
 			state = ROTATING
 		ROTATING:
 			return
@@ -162,6 +190,7 @@ func _on_Button_pressed():
 
 func remove_card():
 	$Viewport/Card.start_remove()
+	play_some_card_audio()
 	state = REMOVING
 	allow_city = false
 	allow_road = false
@@ -174,12 +203,15 @@ func _on_Card_finished_removing():
 
 func _on_Card_finished_rotating():
 	state = SHOWING
+	play_some_card_audio()
 	do_card_action(current_card)
 	
 func _on_road_built():
+	play_card_audio(current_card)
 	remove_card()
 
 func _on_city_built():
+	play_card_audio(current_card)
 	$"/root/Root/Camera".update_camera_limits()
 	remove_card()
 
@@ -205,6 +237,7 @@ func add_event_icon(city, icon):
 
 func _on_city_clicked(city):
 	if allow_city:
+		play_card_audio(current_card)
 		var multiplier = 1
 		for i in range(min(3, city.events.size())):
 			if city.events[-i-1] == current_event:
@@ -225,6 +258,7 @@ func _on_city_clicked(city):
 
 func _on_road_clicked(road):
 	if allow_road:
+		play_card_audio(current_card)
 		road.queue_free()
 		remove_card()
 
@@ -244,6 +278,7 @@ func _on_SaveButton_pressed():
 			is_card_saved = false
 			$Viewport/Card.set_card_image(card_textures[current_card])
 			$Viewport/Card.start_show()
+			play_some_card_audio()
 			state = ROTATING
 	else:
 		if state == SHOWING:
