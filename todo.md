@@ -10,10 +10,11 @@
  - [x] Population Increase in Cities
  - [x] Icons of last actions
  - [x] Fix dead cities spawning cars
- - [ ] Fancy display if population count decreases
- - [ ] Regrow trees
+ - [x] Fancy display if population count decreases
+ - [x] Regrow trees
  - [x] Combo for events
- - [ ] Car remove white background
+ - [x] Car remove white background
+ - [ ] Save card
 
 ## Design
 
