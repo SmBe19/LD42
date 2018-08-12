@@ -189,8 +189,12 @@ func _on_city_clicked(city):
 				multiplier += 1
 		print("Multiplier: ", multiplier)
 		var pop = city.population
-		pop -= pop_kill_abs * multiplier
-		pop -= pop_kill_rel * pop * multiplier
+		var death = 0
+		death +=  pop_kill_abs * multiplier
+		death += pop_kill_rel * pop * multiplier
+		death = min(death, pop)
+		pop -= death
+		city.get_node("Death").display_death(-death)
 		city.population = max(0, pop)
 		city.event_score += event_score * multiplier
 		city.events.append(current_event)
