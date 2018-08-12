@@ -23,6 +23,10 @@ func _ready():
 #	pass
 
 func on_updated_camera_limits():
+	$BG.rect_position.x = floor(camera.limit_left / 64)*64
+	$BG.rect_position.y = floor(camera.limit_top  / 64)*64
+	$BG.rect_size.x = camera.limit_right  - camera.limit_left + 128
+	$BG.rect_size.y = camera.limit_bottom - camera.limit_top  + 128
 	for xo in range(camera.limit_left - camera.limit_left % spacing, camera.limit_right, spacing):
 		for yo in range(camera.limit_top - camera.limit_top % spacing, camera.limit_bottom, spacing):
 			if processed.has_point(Vector2(xo, yo)):
@@ -31,7 +35,7 @@ func on_updated_camera_limits():
 			var y = yo + rand_range(-0.5*spacing, 0.5*spacing)
 			var tree = Tree.instance()
 			tree.position = Vector2(x, y)
-			add_child(tree)
+			$Trees.add_child(tree)
 	
 	processed = Rect2(
 		camera.limit_left,
@@ -41,7 +45,7 @@ func on_updated_camera_limits():
 
 func clear_trees(node, w, h):
 	var inv_tr = node.transform.affine_inverse()
-	for tree in get_children():
+	for tree in $Trees.get_children():
 		var pos = inv_tr.xform(tree.position)
 		if Rect2(-0.5*Vector2(w,h), Vector2(w,h)).has_point(pos):
 			tree.intersection_count += 1
@@ -50,7 +54,7 @@ func clear_trees(node, w, h):
 	
 func regrow_trees(node, w, h):
 	var inv_tr = node.transform.affine_inverse()
-	for tree in get_children():
+	for tree in $Trees.get_children():
 		var pos = inv_tr.xform(tree.position)
 		if Rect2(-0.5*Vector2(w,h), Vector2(w,h)).has_point(pos):
 			tree.intersection_count -= 1
