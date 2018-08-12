@@ -18,3 +18,6 @@ func _on_Restart_pressed():
 
 func _ready():
 	$Panel/Label.text = strings[randi() % strings.size()]
+
+func _on_Timer_timeout():
+	$Panel.visible = true
