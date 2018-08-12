@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://img/population.png" type="Texture" id=1]
 [ext_resource path="res://fnt/dejavu-medium.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Card.gd" type="Script" id=3]
-[ext_resource path="res://Card.tscn" type="PackedScene" id=4]
-[ext_resource path="res://SavedCard.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Mute.gd" type="Script" id=3]
+[ext_resource path="res://Card.gd" type="Script" id=4]
+[ext_resource path="res://Card.tscn" type="PackedScene" id=5]
+[ext_resource path="res://SavedCard.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ViewportTexture" id=1]
 
@@ -18,15 +19,12 @@ resource_local_to_scene = true
 flags = 0
 viewport_path = NodePath("SavedCard/Viewport")
 
-[node name="FixHUD" type="Node"]
+[node name="FixHUD" type="Node" index="0"]
 
 [node name="Population" type="Node2D" parent="." index="0"]
 
 position = Vector2( 1080, 0 )
 _sections_unfolded = [ "Transform" ]
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="PopulationBackground" type="Polygon2D" parent="Population" index="0"]
 
@@ -74,10 +72,34 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "custom_fonts" ]
 
+[node name="Mute" type="TextureButton" parent="Population" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 150.0
+margin_top = 5.0
+margin_right = 190.0
+margin_bottom = 45.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+script = ExtResource( 3 )
+_sections_unfolded = [ "Rect" ]
+
 [node name="Card" type="Node2D" parent="." index="1"]
 
 position = Vector2( 1100, 570 )
-script = ExtResource( 3 )
+script = ExtResource( 4 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Viewport" type="Viewport" parent="Card" index="0"]
@@ -107,7 +129,7 @@ shadow_atlas_quad_2 = 3
 shadow_atlas_quad_3 = 4
 _sections_unfolded = [ "Audio Listener", "GUI", "Physics", "Render Target", "Rendering", "Shadow Atlas" ]
 
-[node name="Card" parent="Card/Viewport" index="0" instance=ExtResource( 4 )]
+[node name="Card" parent="Card/Viewport" index="0" instance=ExtResource( 5 )]
 
 [node name="ViewportSprite" type="Sprite" parent="Card" index="1"]
 
@@ -168,7 +190,7 @@ shadow_atlas_quad_1 = 2
 shadow_atlas_quad_2 = 3
 shadow_atlas_quad_3 = 4
 
-[node name="SavedCard" parent="SavedCard/Viewport" index="0" instance=ExtResource( 5 )]
+[node name="SavedCard" parent="SavedCard/Viewport" index="0" instance=ExtResource( 6 )]
 
 [node name="ViewportSprite" type="Sprite" parent="SavedCard" index="1"]
 
@@ -196,6 +218,8 @@ enabled_focus_mode = 2
 shortcut = null
 group = null
 _sections_unfolded = [ "Material", "Rect", "Textures", "Visibility" ]
+
+[connection signal="pressed" from="Population/Mute" to="Population/Mute" method="_on_Mute_pressed"]
 
 [connection signal="finished_removing" from="Card/Viewport/Card" to="Card" method="_on_Card_finished_removing"]
 
