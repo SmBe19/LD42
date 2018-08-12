@@ -27,7 +27,7 @@
 
  - [ ] Soundtrack
 
-## Souds
+## Sounds
 
  - [ ] Card Flip
  - [ ] Card Remove
