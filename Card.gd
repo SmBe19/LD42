@@ -55,15 +55,15 @@ var card_icons = {
 }
 
 var card_sounds = {
-	CARD_ROAD: preload("res://snd/build.wav"),
-	CARD_CITY: preload("res://snd/build.wav"),
+	CARD_ROAD: preload("res://snd/build2.wav"),
+	CARD_CITY: preload("res://snd/build2.wav"),
 	CARD_STORM: preload("res://snd/wave.wav"),
 	CARD_QUAKE: preload("res://snd/quake.wav"),
 	CARD_PLAGUE: preload("res://snd/ambulance.wav"),
-	CARD_HEAT: preload("res://snd/random.wav"),
+	CARD_HEAT: preload("res://snd/hotter.wav"),
 	CARD_METEOR: preload("res://snd/meteor.wav"),
-	CARD_TSUNAMI: preload("res://snd/water.wav"),
-	CARD_BEAR: preload("res://snd/bear.wav"),
+	CARD_TSUNAMI: preload("res://snd/bigwave.wav"),
+	CARD_BEAR: preload("res://snd/random.wav"),
 	CARD_FIRE: preload("res://snd/firetruck.wav"),
 }
 
@@ -71,6 +71,8 @@ var some_card_audio = [
 	preload("res://snd/card.wav"),
 	preload("res://snd/card2.wav"),
 	preload("res://snd/card3.wav"),
+	preload("res://snd/card4.wav"),
+	preload("res://snd/card5.wav"),
 ]
 
 func play_card_audio(card):
@@ -248,6 +250,7 @@ func _on_city_clicked(city):
 		death +=  pop_kill_abs * multiplier
 		death += pop_kill_rel * pop * multiplier
 		death = min(death, pop)
+		$"/root/Root/Game".total_killed += death
 		pop -= death
 		city.get_node("Death").display_death(-death)
 		city.population = max(0, pop)

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/card4.wav-c550a30dac26a98385ccb7fa7e35fb36.sample"
+
+[deps]
+
+source_file="res://snd/card4.wav"
+dest_files=[ "res://.import/card4.wav-c550a30dac26a98385ccb7fa7e35fb36.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

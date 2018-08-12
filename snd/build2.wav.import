@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/build2.wav-fe796054ce8a776ad6b4e6ecb1ebc5d2.sample"
+
+[deps]
+
+source_file="res://snd/build2.wav"
+dest_files=[ "res://.import/build2.wav-fe796054ce8a776ad6b4e6ecb1ebc5d2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

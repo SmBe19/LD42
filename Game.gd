@@ -14,6 +14,7 @@ var Youwon = preload("res://YouWon.tscn")
 var won_game = true
 
 var population = 0 setget set_population
+var total_killed = 0
 
 var selection = null
 var road_building_active = false
@@ -43,6 +44,7 @@ func activate_city_building(active):
 
 func activate_item_preview(active):
 	$ItemPrototype.visible = active
+	$ItemPrototype/Sprite.modulate = Color(1, 1, 1, 1)
 
 func create_city(x, y):
 	var city = City.instance()
