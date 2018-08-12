@@ -200,9 +200,19 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = ExtResource( 4 )
-text = "Help goes here!
+text = "You are mother nature trying to get rid the pest called humans. Use nature catastrophes to destroy them!
 
-Blub!"
+There are various events that can occur, such as the humans building a city, them building a road or one of several nature catastrophes.
+You draw events from a pile of cards, and choose where they occurr. You can also save up to one event to use it later.
+
+Cities can be built anywhere not too close to another city.
+To build a road, click on two cities to connect them.
+The nature catastrophes can be applied to a city, decreasing its population and attractiveness. Some catastrophes can also be used on roads, destroying them in the process.
+
+Controls:
+WASD/Arrow keys/Mouse to edge: move map
+Space: Uncover next card
+Q: Save current card"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
