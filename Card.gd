@@ -67,8 +67,10 @@ func do_card_action(card):
 
 	match card:
 		CARD_ROAD:
+			allow_city = false
 			$"/root/Root/Game".activate_road_building(true)
 		CARD_CITY:
+			allow_city = false
 			$"/root/Root/Game".activate_city_building(true)
 		CARD_STORM:
 			pop_kill_rel = 0.05
@@ -120,7 +122,7 @@ func choose_card():
 func road_probability():
 	var c = $"/root/Root/Game/Cities".get_child_count()
 	var r = $"/root/Root/Game/Roads".get_child_count()
-	return (1 - (log(r) / log(c) - 1)) * card_probabilities[CARD_CITY]
+	return max(0.1, (1 - (log(r) / log(c) - 1)) * card_probabilities[CARD_CITY] * 0.4)
 
 func can_build_road():
 	var c = $"/root/Root/Game/Cities".get_child_count()

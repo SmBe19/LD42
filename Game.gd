@@ -103,6 +103,15 @@ func local_to_global(local):
 	var cam = $"/root/Root/Camera".get_camera_screen_center()
 	return local + cam - init_cam_pos
 
+func _input(event):
+	if event is InputEventMouseMotion:
+		if city_building_active:
+			var global = local_to_global(event.position)
+			if city_dist(global.x, global.y) > min_dist:
+				$ItemPrototype/Sprite.modulate = Color(1, 1, 1, 1)
+			else:
+				$ItemPrototype/Sprite.modulate = Color(0.8, 0.2, 0.2, 0.5)
+
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		if not event.is_pressed():
@@ -110,17 +119,9 @@ func _unhandled_input(event):
 				var global = local_to_global(event.position)
 				var x = global.x
 				var y = global.y
-				get_tree().set_input_as_handled()
 				if city_dist(global.x, global.y) > min_dist:
 					create_city_with_roads(global.x, global.y)
 					emit_signal("city_built")
-	elif event is InputEventMouseMotion:
-		if city_building_active:
-			var global = local_to_global(event.position)
-			if city_dist(global.x, global.y) > min_dist:
-				$ItemPrototype/Sprite.modulate = Color(1, 1, 1, 1)
-			else:
-				$ItemPrototype/Sprite.modulate = Color(0.8, 0.2, 0.2, 0.5)
 
 func _ready():
 	init_cam_pos = $"/root/Root/Camera".get_camera_screen_center()

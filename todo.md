@@ -4,7 +4,7 @@
 
  - [x] Implement Actions
  - [x] Implement Background "Image"
- - [ ] Add images to Background "Image"
+ - [x] Add images to Background "Image"
  - [x] City "Image"
  - [x] Update Population Count
  - [x] Population Increase in Cities
@@ -14,7 +14,8 @@
  - [x] Regrow trees
  - [x] Combo for events
  - [x] Car remove white background
- - [ ] Save card
+ - [x] Save card
+ - [ ] Keyboard control
  - [ ] Main menu
 
 ## Design
@@ -22,7 +23,7 @@
  - [ ] Make Game Fun
  - [ ] Give roads more meaning
  - [ ] Adjust action probabilities
- - [ ] Save up one card
+ - [x] Save up one card
 
 ## Music
 
