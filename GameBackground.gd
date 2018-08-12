@@ -44,8 +44,16 @@ func clear_trees(node, w, h):
 	for tree in get_children():
 		var pos = inv_tr.xform(tree.position)
 		if Rect2(-0.5*Vector2(w,h), Vector2(w,h)).has_point(pos):
-			#print("removing ",tree)
-			remove_child(tree)
-			tree.queue_free()
+			tree.intersection_count += 1
+			tree.visible = false
 	pass
 	
+func regrow_trees(node, w, h):
+	var inv_tr = node.transform.affine_inverse()
+	for tree in get_children():
+		var pos = inv_tr.xform(tree.position)
+		if Rect2(-0.5*Vector2(w,h), Vector2(w,h)).has_point(pos):
+			tree.intersection_count -= 1
+			if tree.intersection_count == 0:
+				tree.visible = true
+	pass

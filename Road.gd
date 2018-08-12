@@ -32,6 +32,7 @@ func queue_free():
 	.queue_free()
 	city1.neighbors.erase(city2)
 	city2.neighbors.erase(city1)
+	bg.regrow_trees(self, distance, 80)
 
 func _ready():
 	if bg != null:
