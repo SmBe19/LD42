@@ -129,6 +129,14 @@ func can_build_road():
 	var r = $"/root/Root/Game/Roads".get_child_count()
 	return (c * (c-1))/2 != r
 
+func _input(event):
+	if event.is_action_pressed("ui_accept"):
+		_on_Button_pressed()
+		get_tree().set_input_as_handled()
+	elif event.is_action_pressed("ui_save"):
+		_on_SaveButton_pressed()
+		get_tree().set_input_as_handled()
+
 func _on_Button_pressed():
 	match state:
 		HIDDEN:

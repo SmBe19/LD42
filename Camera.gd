@@ -1,6 +1,8 @@
 extends Camera2D
 
 export var speed = 400.0
+var pressed = [0, 0, 0, 0]
+var ui_names = ["ui_left", "ui_right", "ui_up", "ui_down"]
 
 signal updated_camera_limits
 
@@ -17,6 +19,18 @@ func _process(delta):
 		position.y -= delta * speed
 	if y > drag_margin_bottom:
 		position.y += delta * speed
+	
+	position.x += (pressed[1] - pressed[0]) * delta * 2
+	position.y += (pressed[3] - pressed[2]) * delta * 2
+
+func _input(event):
+	for i in range(ui_names.size()):
+		if event.is_action_pressed(ui_names[i]):
+			pressed[i] = speed
+			get_tree().set_input_as_handled()
+		elif event.is_action_released(ui_names[i]):
+			pressed[i] = 0
+			get_tree().set_input_as_handled()
 
 
 func update_camera_limits():
