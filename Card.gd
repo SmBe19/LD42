@@ -21,7 +21,7 @@ var card_probabilities = {
 	CARD_STORM: 1,
 	CARD_QUAKE: 1,
 	CARD_PLAGUE: 0.7,
-	CARD_HEAT: 1.4,
+	CARD_HEAT: 1.7,
 	CARD_METEOR: 1,
 	CARD_TSUNAMI: 1,
 	CARD_BEAR: 0.5,
@@ -84,6 +84,7 @@ func do_card_action(card):
 			event_score = 1.7
 		CARD_HEAT:
 			pop_kill_abs = 20 + randi() % 10
+			pop_kill_rel = 0.05
 			event_score = 0.1
 		CARD_METEOR:
 			allow_road = true

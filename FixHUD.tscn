@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://img/population.png" type="Texture" id=1]
 [ext_resource path="res://fnt/dejavu-medium.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Mute.gd" type="Script" id=3]
-[ext_resource path="res://Card.gd" type="Script" id=4]
-[ext_resource path="res://Card.tscn" type="PackedScene" id=5]
-[ext_resource path="res://SavedCard.tscn" type="PackedScene" id=6]
+[ext_resource path="res://img/mute.png" type="Texture" id=3]
+[ext_resource path="res://Mute.gd" type="Script" id=4]
+[ext_resource path="res://Card.gd" type="Script" id=5]
+[ext_resource path="res://Card.tscn" type="PackedScene" id=6]
+[ext_resource path="res://SavedCard.tscn" type="PackedScene" id=7]
 
 [sub_resource type="ViewportTexture" id=1]
 
@@ -93,13 +94,14 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-script = ExtResource( 3 )
-_sections_unfolded = [ "Rect" ]
+texture_normal = ExtResource( 3 )
+script = ExtResource( 4 )
+_sections_unfolded = [ "Rect", "Textures" ]
 
 [node name="Card" type="Node2D" parent="." index="1"]
 
 position = Vector2( 1100, 570 )
-script = ExtResource( 4 )
+script = ExtResource( 5 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Viewport" type="Viewport" parent="Card" index="0"]
@@ -129,7 +131,7 @@ shadow_atlas_quad_2 = 3
 shadow_atlas_quad_3 = 4
 _sections_unfolded = [ "Audio Listener", "GUI", "Physics", "Render Target", "Rendering", "Shadow Atlas" ]
 
-[node name="Card" parent="Card/Viewport" index="0" instance=ExtResource( 5 )]
+[node name="Card" parent="Card/Viewport" index="0" instance=ExtResource( 6 )]
 
 [node name="ViewportSprite" type="Sprite" parent="Card" index="1"]
 
@@ -190,7 +192,7 @@ shadow_atlas_quad_1 = 2
 shadow_atlas_quad_2 = 3
 shadow_atlas_quad_3 = 4
 
-[node name="SavedCard" parent="SavedCard/Viewport" index="0" instance=ExtResource( 6 )]
+[node name="SavedCard" parent="SavedCard/Viewport" index="0" instance=ExtResource( 7 )]
 
 [node name="ViewportSprite" type="Sprite" parent="SavedCard" index="1"]
 
