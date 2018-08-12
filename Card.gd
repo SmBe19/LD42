@@ -60,7 +60,7 @@ var card_sounds = {
 	CARD_STORM: preload("res://snd/wave.wav"),
 	CARD_QUAKE: preload("res://snd/quake.wav"),
 	CARD_PLAGUE: preload("res://snd/ambulance.wav"),
-	CARD_HEAT: preload("res://snd/hot.wav"),
+	CARD_HEAT: preload("res://snd/random.wav"),
 	CARD_METEOR: preload("res://snd/meteor.wav"),
 	CARD_TSUNAMI: preload("res://snd/water.wav"),
 	CARD_BEAR: preload("res://snd/bear.wav"),
