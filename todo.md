@@ -17,7 +17,7 @@
  - [x] Save card
  - [x] Keyboard control
  - [X] Main menu
- * [ ] `impl` Sounds
+ * [X] `impl` Sounds
 
 ## Design
 
