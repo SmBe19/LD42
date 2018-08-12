@@ -16,32 +16,31 @@
  - [x] Car remove white background
  - [x] Save card
  - [x] Keyboard control
- - [ ] Main menu
+ - [X] Main menu
+ * [ ] `impl` Sounds
 
 ## Design
 
- - [ ] Make Game Fun
- - [ ] Give roads more meaning
- - [ ] Adjust action probabilities
+ - [X] Make Game Fun
+ - [X] Give roads more meaning
+ - [X] Adjust action probabilities
  - [x] Save up one card
 
 ## Music
 
- - [ ] Soundtrack
+ - [X] Soundtrack
 
 ## Sounds
 
- - [ ] Card Flip
- - [ ] Card Remove
- - [ ] City Build
- - [ ] Road Build
- - [ ] Thunder Storm
- - [ ] Earthquake
- - [ ] Plague
- - [ ] Heat Wave
- - [ ] Meteor
- - [ ] Tsunami
- - [ ] Bear Attack
- - [ ] Forest Fire
- - [ ] Traffic
- - [ ] Airplane
+ - [X] Card Flip
+ - [X] Card Remove
+ - [X] City Build
+ - [X] Road Build
+ - [X] Thunder Storm
+ - [X] Earthquake
+ - [X] Plague
+ - [X] Heat Wave
+ - [X] Meteor
+ - [X] Tsunami
+ - [X] Bear Attack
+ - [X] Forest Fire
