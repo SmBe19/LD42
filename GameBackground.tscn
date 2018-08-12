@@ -2,8 +2,9 @@
 
 [ext_resource path="res://GameBackground.gd" type="Script" id=1]
 
-[node name="GameBackground" type="Node2D"]
+[node name="GameBackground" type="YSort"]
 
+sort_enabled = true
 script = ExtResource( 1 )
 
 
