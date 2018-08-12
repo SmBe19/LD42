@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/firetruck.wav-267f7ec4f1b5bee18a48e9993dd94439.sample"
+
+[deps]
+
+source_file="res://snd/firetruck.wav"
+dest_files=[ "res://.import/firetruck.wav-267f7ec4f1b5bee18a48e9993dd94439.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

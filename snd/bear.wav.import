@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bear.wav-93e8fd4c9920beaf29c36b179bb968ca.sample"
+
+[deps]
+
+source_file="res://snd/bear.wav"
+dest_files=[ "res://.import/bear.wav-93e8fd4c9920beaf29c36b179bb968ca.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
