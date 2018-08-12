@@ -1,6 +1,6 @@
 extends Node2D
 
-const flow_rate = 5
+const flow_rate = 4.2
 
 onready var bg = $"/root/Root/Game/GameBackground"
 

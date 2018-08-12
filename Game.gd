@@ -103,7 +103,7 @@ func local_to_global(local):
 	var cam = $"/root/Root/Camera".get_camera_screen_center()
 	return local + cam - init_cam_pos
 
-func _input(event):
+func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		if not event.is_pressed():
 			if city_building_active:

@@ -2,13 +2,13 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/car.png-7625d60adf855318f6d595df7bf64ce4.s3tc.stex"
-path.etc2="res://.import/car.png-7625d60adf855318f6d595df7bf64ce4.etc2.stex"
+path.s3tc="res://.import/card_save.png-70f548a72c4093bdca24f2b9275af467.s3tc.stex"
+path.etc2="res://.import/card_save.png-70f548a72c4093bdca24f2b9275af467.etc2.stex"
 
 [deps]
 
-source_file="res://img/car.png"
-dest_files=[ "res://.import/car.png-7625d60adf855318f6d595df7bf64ce4.s3tc.stex", "res://.import/car.png-7625d60adf855318f6d595df7bf64ce4.etc2.stex" ]
+source_file="res://img/card_save.png"
+dest_files=[ "res://.import/card_save.png-70f548a72c4093bdca24f2b9275af467.s3tc.stex", "res://.import/card_save.png-70f548a72c4093bdca24f2b9275af467.etc2.stex" ]
 
 [params]
 

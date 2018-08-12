@@ -5,6 +5,8 @@ enum CARD_TYPE { CARD_ROAD, CARD_CITY, CARD_STORM, CARD_QUAKE, CARD_PLAGUE, CARD
 
 var state = HIDDEN
 var current_card = CARD_ROAD
+var saved_card = CARD_ROAD
+var is_card_saved = false
 
 var current_event = null
 var allow_city = false
@@ -54,6 +56,7 @@ var card_icons = {
 
 func do_card_action(card):
 	$"/root/Root/Game".activate_item_preview(true)
+	$"/root/Root/Game/ItemPrototype/Sprite".texture = card_icons[card]
 	
 	current_event = card
 	allow_city = true
@@ -111,7 +114,6 @@ func choose_card():
 				rval -= card_probabilities[typ]
 				continue
 			$Viewport/Card.set_card_image(card_textures[typ])
-			$"/root/Root/Game/ItemPrototype/Sprite".texture = card_icons[typ]
 			return typ
 		rval -= card_probabilities[typ]
 
@@ -144,6 +146,8 @@ func remove_card():
 	allow_city = false
 	allow_road = false
 	$"/root/Root/Game".activate_item_preview(false)
+	$"/root/Root/Game".activate_city_building(false)
+	$"/root/Root/Game".activate_road_building(false)
 
 func _on_Card_finished_removing():
 	state = HIDDEN
@@ -153,11 +157,9 @@ func _on_Card_finished_rotating():
 	do_card_action(current_card)
 	
 func _on_road_built():
-	$"/root/Root/Game".activate_road_building(false)
 	remove_card()
 
 func _on_city_built():
-	$"/root/Root/Game".activate_city_building(false)
 	$"/root/Root/Camera".update_camera_limits()
 	remove_card()
 
@@ -196,7 +198,7 @@ func _on_city_clicked(city):
 		pop -= death
 		city.get_node("Death").display_death(-death)
 		city.population = max(0, pop)
-		city.event_score += event_score * multiplier
+		city.event_score += (event_score + sqrt(death) / 20) * multiplier
 		city.events.append(current_event)
 		add_event_icon(city, card_icons[current_event])
 		remove_card()
@@ -212,3 +214,21 @@ func _ready():
 	$"/root/Root/Game".connect("city_built", self, "_on_city_built")
 	$"/root/Root/Game".connect("city_clicked", self, "_on_city_clicked")
 	$"/root/Root/Game".connect("road_clicked", self, "_on_road_clicked")
+
+
+func _on_SaveButton_pressed():
+	if is_card_saved:
+		if state == HIDDEN:
+			$"../SavedCard/Viewport/SavedCard".remove_card()
+			current_card = saved_card
+			is_card_saved = false
+			$Viewport/Card.set_card_image(card_textures[current_card])
+			$Viewport/Card.start_show()
+			state = ROTATING
+	else:
+		if state == SHOWING:
+			saved_card = current_card
+			is_card_saved = true
+			$"../SavedCard/Viewport/SavedCard".set_card_image(card_textures[saved_card])
+			$"../SavedCard/Viewport/SavedCard".show_card()
+			remove_card()

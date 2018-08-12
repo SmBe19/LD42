@@ -9,6 +9,9 @@ func set_card_image(texture):
 func start_rotation():
 	$Flip.play("Rotate")
 
+func start_show():
+	$Flip.play("ShowCard")
+
 func start_remove():
 	$Flip.play("RemoveCard")
 

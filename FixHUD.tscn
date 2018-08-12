@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://img/population.png" type="Texture" id=1]
 [ext_resource path="res://fnt/dejavu-medium.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Card.gd" type="Script" id=3]
 [ext_resource path="res://Card.tscn" type="PackedScene" id=4]
+[ext_resource path="res://SavedCard.tscn" type="PackedScene" id=5]
 
 [sub_resource type="ViewportTexture" id=1]
 
@@ -11,7 +12,13 @@ resource_local_to_scene = true
 flags = 0
 viewport_path = NodePath("Card/Viewport")
 
-[node name="FixHUD" type="Node"]
+[sub_resource type="ViewportTexture" id=2]
+
+resource_local_to_scene = true
+flags = 0
+viewport_path = NodePath("SavedCard/Viewport")
+
+[node name="FixHUD" type="Node" index="0"]
 
 [node name="Population" type="Node2D" parent="." index="0"]
 
@@ -71,7 +78,7 @@ _sections_unfolded = [ "Rect", "custom_fonts" ]
 
 position = Vector2( 1100, 570 )
 script = ExtResource( 3 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="Viewport" type="Viewport" parent="Card" index="0"]
 
@@ -85,7 +92,7 @@ hdr = false
 disable_3d = false
 usage = 2
 debug_draw = 0
-render_target_v_flip = false
+render_target_v_flip = true
 render_target_clear_mode = 0
 render_target_update_mode = 2
 audio_listener_enable_2d = false
@@ -105,7 +112,6 @@ _sections_unfolded = [ "Audio Listener", "GUI", "Physics", "Render Target", "Ren
 [node name="ViewportSprite" type="Sprite" parent="Card" index="1"]
 
 texture = SubResource( 1 )
-flip_v = true
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
 [node name="Button" type="TextureButton" parent="Card" index="2"]
@@ -131,10 +137,72 @@ shortcut = null
 group = null
 _sections_unfolded = [ "Rect" ]
 
+[node name="SavedCard" type="Node2D" parent="." index="2"]
+
+position = Vector2( 780, 600 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Viewport" type="Viewport" parent="SavedCard" index="0"]
+
+arvr = false
+size = Vector2( 600, 600 )
+own_world = true
+world = null
+transparent_bg = true
+msaa = 0
+hdr = false
+disable_3d = false
+usage = 2
+debug_draw = 0
+render_target_v_flip = true
+render_target_clear_mode = 0
+render_target_update_mode = 2
+audio_listener_enable_2d = false
+audio_listener_enable_3d = false
+physics_object_picking = false
+gui_disable_input = true
+gui_snap_controls_to_pixels = true
+shadow_atlas_size = 0
+shadow_atlas_quad_0 = 2
+shadow_atlas_quad_1 = 2
+shadow_atlas_quad_2 = 3
+shadow_atlas_quad_3 = 4
+
+[node name="SavedCard" parent="SavedCard/Viewport" index="0" instance=ExtResource( 5 )]
+
+[node name="ViewportSprite" type="Sprite" parent="SavedCard" index="1"]
+
+position = Vector2( 100, 150 )
+texture = SubResource( 2 )
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
+
+[node name="Button" type="TextureButton" parent="SavedCard" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 200.0
+margin_bottom = 300.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+_sections_unfolded = [ "Material", "Rect", "Textures", "Visibility" ]
+
 [connection signal="finished_removing" from="Card/Viewport/Card" to="Card" method="_on_Card_finished_removing"]
 
 [connection signal="finished_rotating" from="Card/Viewport/Card" to="Card" method="_on_Card_finished_rotating"]
 
 [connection signal="pressed" from="Card/Button" to="Card" method="_on_Button_pressed"]
+
+[connection signal="pressed" from="SavedCard/Button" to="Card" method="_on_SaveButton_pressed"]
 
 

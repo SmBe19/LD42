@@ -15,6 +15,7 @@
  - [x] Combo for events
  - [x] Car remove white background
  - [ ] Save card
+ - [ ] Main menu
 
 ## Design
 
