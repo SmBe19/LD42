@@ -10,6 +10,8 @@ export var min_dist = 200
 
 var Road = preload("res://Road.tscn")
 var City = preload("res://City.tscn")
+var Youwon = preload("res://YouWon.tscn")
+var won_game = true
 
 var population = 0 setget set_population
 
@@ -19,9 +21,19 @@ var city_building_active = false
 
 var init_cam_pos
 
+func win_game():
+	if won_game:
+		return
+	won_game = true
+	$"/root/Root/HUD/".add_child(Youwon.instance())
+
 func set_population(pop):
 	population = pop
 	$"/root/Root/HUD/FixHUD/Population/PopLabel".text = str(round(pop))
+	if pop > 42:
+		won_game = false
+	if pop < 0.5:
+		win_game()
 
 func activate_road_building(active):
 	road_building_active = active

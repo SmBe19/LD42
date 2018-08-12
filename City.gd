@@ -27,8 +27,8 @@ func set_population(pop):
 		var r = 10 * pow(i, 0.7)
 		house.position = polar2cartesian(r, r*PHI + random_offset)
 		$Houses.add_child(house)
-		if i > 2:
-			if randf() < 0.9:
+		if i > 7:
+			if randf() < 0.42:
 				var hs = $Houses.get_child(randi() % (i / 2))
 				print("upgrade ", hs)
 				hs.upgrade()

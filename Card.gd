@@ -110,6 +110,15 @@ func choose_card():
 	for typ in CARD_TYPE.values():
 		probsum += card_probabilities[typ]
 	rval *= probsum
+	
+	# Cheats
+	var good_prob = card_probabilities[CARD_ROAD] + card_probabilities[CARD_CITY]
+	if Input.is_action_pressed("ui_page_up"):
+		rval = (rval / probsum) * good_prob
+	elif Input.is_action_pressed("ui_page_down"):
+		rval = (rval / probsum) * (probsum - good_prob) + good_prob
+	# End Cheats
+	
 	for typ in CARD_TYPE.values():
 		if rval <= card_probabilities[typ]:
 			if typ == CARD_ROAD and not can_build_road():
