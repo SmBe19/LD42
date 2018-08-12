@@ -23,8 +23,8 @@ func _ready():
 #	pass
 
 func on_updated_camera_limits():
-	$BG.rect_position.x = floor(camera.limit_left / 64)*64
-	$BG.rect_position.y = floor(camera.limit_top  / 64)*64
+	$BG.rect_position.x = floor(camera.limit_left / 64)*64 - 64
+	$BG.rect_position.y = floor(camera.limit_top  / 64)*64 - 64
 	$BG.rect_size.x = camera.limit_right  - camera.limit_left + 128
 	$BG.rect_size.y = camera.limit_bottom - camera.limit_top  + 128
 	for xo in range(camera.limit_left - camera.limit_left % spacing, camera.limit_right, spacing):
