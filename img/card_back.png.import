@@ -2,23 +2,22 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/card_back.png-7582757287ee7abe7c6c9983c10e5f4c.s3tc.stex"
-path.etc2="res://.import/card_back.png-7582757287ee7abe7c6c9983c10e5f4c.etc2.stex"
+path="res://.import/card_back.png-7582757287ee7abe7c6c9983c10e5f4c.stex"
 
 [deps]
 
 source_file="res://img/card_back.png"
-dest_files=[ "res://.import/card_back.png-7582757287ee7abe7c6c9983c10e5f4c.s3tc.stex", "res://.import/card_back.png-7582757287ee7abe7c6c9983c10e5f4c.etc2.stex" ]
+dest_files=[ "res://.import/card_back.png-7582757287ee7abe7c6c9983c10e5f4c.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
-flags/repeat=true
+flags/repeat=0
 flags/filter=true
-flags/mipmaps=true
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true

@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/card_save.png-70f548a72c4093bdca24f2b9275af467.stex"
+path="res://.import/web_hi_res_512.png-e87a8ca506c8893b8473a4990d914c9b.stex"
 
 [deps]
 
-source_file="res://img/card_save.png"
-dest_files=[ "res://.import/card_save.png-70f548a72c4093bdca24f2b9275af467.stex" ]
+source_file="res://web_hi_res_512.png"
+dest_files=[ "res://.import/web_hi_res_512.png-e87a8ca506c8893b8473a4990d914c9b.stex" ]
 
 [params]
 

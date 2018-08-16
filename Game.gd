@@ -43,6 +43,9 @@ func activate_city_building(active):
 	city_building_active = active
 
 func activate_item_preview(active):
+	if  OS.get_name() == "Android":
+		$ItemPrototype.visible = false
+		return
 	$ItemPrototype.visible = active
 	$ItemPrototype/Sprite.modulate = Color(1, 1, 1, 1)
 
