@@ -13,7 +13,7 @@ Each city has an associated attractiveness which is influenced by many factors i
 
 A nature disaster will lower a cities attractiveness and thereby might drive people to neighboring cities. It will also kill part of the population. Some disasters kill a certain percentage of the population while others kill a fixed number, or a combination of both. A few disasters can be applied to roads and will destroy the road. The following table shows the effects of the different disasters.
 
-| Disaster     | Absolute | Relative | Attractiveness | Road? |
+| Disaster     | Relative | Absolute | Attractiveness | Road? |
 | ------------ | -------- | -------- | -------------- | ----- |
 | Heat Wave    | 5%       | 20 - 30  | 0.1            | No    |
 | Thunderstorm | 5%       | -        | 0.2            | No    |
